@@ -1,0 +1,28 @@
+{
+    "window.zoomLevel": 0,
+    "editor.fontSize": 18,
+    "terminal.integrated.fontSize": 18,
+
+    "python.terminal.executeInFileDir": true,
+    "python.terminal.launchArgs": ["-i"],
+    "python.linting.pylintEnabled": false,
+
+    "editor.quickSuggestions": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.quickSuggestionsDelay": 10,
+    "editor.wordBasedSuggestions": false,
+    "editor.parameterHints.enabled": false,
+    "editor.rulers": [80],
+
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.runPythonREPL",
+            "interval": 100,
+            "sequence": [
+                "workbench.action.terminal.kill",
+                "python.execInTerminal",
+            ]
+        }
+    ],
+}
+    
