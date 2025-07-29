@@ -1,4 +1,3 @@
-
 from cmu_graphics import *
 
 def onAppStart(app):
@@ -17,6 +16,23 @@ def redrawAll(app):
     drawLine(app.width - 50, 150, app.width, 150, fill = 'white')
     drawLine(app.width - 50, 150, app.width - 50, 250, fill = 'white')
     drawLine(app.width - 50, 250, app.width, 250, fill = 'white')
+    
+    # pillars to jump through
+    drawPillars(app)
+    
+    
+def drawPillars(app):
+    #top pillars
+    for i in range(5):
+        x0 = (60 * i) + 120
+        drawRect(x0, 0, 30, 170, fill = 'pink', border = 'black')
+    #bottom pillars
+    for j in range(5):
+        x0 = (60 *j) + 120
+        drawRect(x0, 270, 30, app.height, fill = 'pink', border = 'black')
+      
+    
+    
     
    
 
