@@ -3,6 +3,12 @@ from cmu_graphics import *
 def onAppStart(app):
     app.rectW = app.width
     app.rectH = app.height
+    
+    #Icon (bird) coordinates and variables
+    app.iconX, app.iconY = 50, app.height/2
+    app.iconStepsPerSecond = 1
+    app.isPaused 
+
 
 def redrawAll(app):
 ## initial background soccer field
@@ -20,6 +26,8 @@ def redrawAll(app):
     # pillars to jump through
     drawPillars(app)
     
+    #Bird icon (circle is temporary)
+    drawIcon(app)
     
 def drawPillars(app):
     #top pillars
@@ -31,6 +39,21 @@ def drawPillars(app):
         x0 = (60 *j) + 120
         drawRect(x0, 270, 30, app.height, fill = 'pink', border = 'black')
       
+def drawIcon(app):
+    drawCircle(app.iconX, app.iconY, 20, fill = 'lightblue', border = 'black')
+    
+# Moving the bird section:
+def onKeyPress(app, key):
+    onStep(app)
+    if key == 'space':
+        app.iconX += 20
+        app.iconY -= 15
+
+def onStep(app):
+   app.iconY += app.iconStepsPerSecond
+    
+#def takeStep(app):
+   # app.iconX += app.iconStepsPerSecond
     
     
     
