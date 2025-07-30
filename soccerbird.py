@@ -1,4 +1,6 @@
 from cmu_graphics import *
+import random
+import math
 
 def onAppStart(app):
     app.rectW = app.width
@@ -7,10 +9,39 @@ def onAppStart(app):
     #Icon (bird) coordinates and variables
     app.iconX, app.iconY = 50, app.height/2
     app.iconStepsPerSecond = 1
-    app.isPaused 
+    app.isPaused = True
+    
+    #Game Intial
+    app.isGameStart = False
+    
+    
+    
+##########################################################################
+                # Intial isntructions/ before game
+##########################################################################
+def instructions_redrawAll(app):
+    drawRect(0, 0, app.width, app.height, fill = 'lightblue')
+    drawLabel('Welcome to Messi Bird!', 200, 50, fill = 'black', size = 36)
+    drawLabel('How To Play:', 200, 100, fill = 'black', size = 24)
+    drawLabel('1). To begin game, click on return/enter key', 150, 150, 
+              fill = 'black')
+    drawLabel('2). To move Messi, click on the space button.', 155, 165, 
+              fill = 'black')
+    drawLabel("This will make Messi jump inorder to move through the pillars", 
+                215, 180, fill = 'black')
+    drawLabel('3). Hitting the pillars = GAME OVER', 132, 195, fill = 'black')
+    
+    drawLabel('**Note: score is increased each time you pass a pillar!', 200, 
+                220, fill = 'black')
 
 
-def redrawAll(app):
+
+
+
+##############################################################################
+                # when Game has begun 
+#############################################################################
+def start_redrawAll(app):
 ## initial background soccer field
     drawRect(0, 0, app.rectW, app.rectH, fill = 'green', opacity = 90 )
     drawLine(app.width/2, 0, 200, app.height, fill = 'white')
@@ -43,24 +74,38 @@ def drawIcon(app):
     drawCircle(app.iconX, app.iconY, 20, fill = 'lightblue', border = 'black')
     
 # Moving the bird section:
-def onKeyPress(app, key):
-    onStep(app)
-    if key == 'space':
-        app.iconX += 20
-        app.iconY -= 15
+def start_onKeyPress(app, key):
+    if key == 'enter':
+        app.isGameStart = True
+        start_onStep(app)
+    if app.isGameStart:
+        if key == 'space':
+            app.iconX += 20
+            app.iconY -= 15
 
-def onStep(app):
-   app.iconY += app.iconStepsPerSecond
+def start_onStep(app):
+    if app.isGameStart:
+        app.iconY += app.iconStepsPerSecond
+        
+
     
 #def takeStep(app):
    # app.iconX += app.iconStepsPerSecond
-    
-    
+   
+
+
+
+
+# Game Button to start
+
+class Button:
+    def __init__(self):
+        pass
     
    
 
 def main():
-    runApp()
+    runAppWithScreens(initialScreen = 'instructions')
 
 main()
 
