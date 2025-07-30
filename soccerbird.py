@@ -33,6 +33,11 @@ def instructions_redrawAll(app):
     
     drawLabel('**Note: score is increased each time you pass a pillar!', 200, 
                 220, fill = 'black')
+    drawLabel('Click SPACE to move to game screen!', 200, 250, fill = 'black')
+                
+def instructions_onKeyPress(app, key):
+    if key == 'space':
+        setActiveScreen('start')
 
 
 
@@ -110,3 +115,4 @@ def main():
 main()
 
 cmu_graphics.run()
+
